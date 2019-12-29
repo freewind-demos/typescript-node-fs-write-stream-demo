@@ -1,17 +1,11 @@
 import fs from 'fs';
 
-const stream = fs.createReadStream('./bigfile.bin',)
+const filePath = './somefile.txt';
 
-stream.on('open', (fd) => {
-  console.log('### open', fd);
-})
+const stream = fs.createWriteStream(filePath);
 
-// - Buffer: no encoding passed
-// - string: encoding passed
-stream.on('data', (data: Buffer) => {
-  console.log('### data', data);
-})
+stream.write('Hello\n');
+stream.write('World\n');
+stream.end();
 
-stream.on('end', () => {
-  console.log('### end')
-})
+console.log(`Done to the file: ${filePath}`);
